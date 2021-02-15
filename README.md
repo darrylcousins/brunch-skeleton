@@ -1,6 +1,6 @@
-# Brunch + Babel/ES6
+# Brunch + Babel + Crank + Tachyons
 
-This is a personal skeleton for [Brunch](http://brunch.io).
+This is a skeleton for [Brunch](http://brunch.io) that includes [Crank](https://crank.js.org/) and [Tachyons](https://tachyons.io/).
 
 ## Installation
 
