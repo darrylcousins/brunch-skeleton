@@ -6,7 +6,7 @@
   "version": "0.0.1",
   "repository": "",
   "scripts": {
-    "start": "brunch watch --server --port 3337",
+    "start": "brunch watch --server",
     "build": "brunch build --production",
     "docs": "node_modules/.bin/jsdoc --configure jsdoc.json --verbose"
   },
