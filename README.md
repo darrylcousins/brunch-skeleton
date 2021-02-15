@@ -27,3 +27,62 @@ This brunch template is designed to get an application started with [Crank](http
 ## Tachyons
 
 And because I like to use [Tachyons](https://tachyons.io/) that is also included.
+
+## Eslint
+
+```
+npx eslint app/*.js
+```
+
+## Prettier
+
+Helper for code formatting.
+
+## JSDoc
+
+```
+npm run docs
+```
+
+## Autoreload
+
+I've left autoreload out of this skeleton as I'm doing my developement remotely and using nginx and haven't yet researched how to configure things so I can avoid websocket errors. I'm therefore used to Ctrl-R.
+
+## Nginx
+
+My basic configuration looks like this:
+
+```
+server {
+	listen 443 ssl;
+
+	server_name $subdomain.$domain.net;
+
+	ssl_certificate /etc/letsencrypt/live/.../fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/.../privkey.pem;
+
+	location / {
+		auth_basic "Restricted Development Server";
+		auth_basic_user_file /etc/nginx/.htpasswd;
+
+		proxy_pass http://127.0.0.1:$myport;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection 'upgrade';
+		proxy_set_header Host $host;
+		proxy_cache_bypass $http_upgrade;
+	}
+	location /public {
+		root $path-to-project;
+		index index.html;
+	}
+	location /docs {
+		root $path-to-project;
+		index index.html;
+	}
+}
+```
+
+The path location to `public` is not essential as the proxy will serve
+index.html without it, but dropping html files in app/assets are not served
+from root otherwise. The alternative is to set up one's own [server](https://github.com/brunch/brunch-guide/blob/master/content/en/chapter10-web-server.md#writing-your-own-server) if not aiming for a single page app.
