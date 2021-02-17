@@ -4,7 +4,7 @@ This is a skeleton for [Brunch](http://brunch.io) that includes [Crank](https://
 
 ## Installation
 
-Clone this repo manually or use `brunch new dir -s darrylcousins/brunch-with-crank
+Clone this repo manually or use `brunch new dir -s darrylcousins/brunch-with-crank`
 
 ## Getting started
 
